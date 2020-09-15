@@ -135,13 +135,21 @@ Final Score: awayTeam - homeTeam */
 
 let homeLA = 0
 let awayRS = 0 
-function scoreboard(inningNum, getInningScore) {
-  let score = 0; 
-  for (let i = 0; i < inningNum; i++){
-    console.log(`inning ${score}: ${getInningScore}`)
+
+function scoreboard(getInningScore, innings) {
+  let inningNum = 0; 
+  for (let i = 0; i < innings; i++){
+    inningNum++; 
+    console.log(`${inningNum}: ${getInningScore()}`)
   }
-  return `Final Score ${home}-${away}`
+  return `Final Score ${homeLA}-${awayRS}`
 }
 
+let getInningScore = function () {{
+    home = homeLA + inning();
+    away = awayRS + inning();
 
-
+  }
+  return `${home} - ${away}`;
+}
+scoreboard(getInningScore, 9)
